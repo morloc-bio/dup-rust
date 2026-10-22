@@ -1,0 +1,5 @@
+--' The biodup test suite against biodup-rust
+module test-biodup-rust (test)
+
+import biodup.test (test)
+import biodup-rust

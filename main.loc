@@ -1,0 +1,33 @@
+--' Rust implementation of the biodup module
+module biodup-rust (*)
+
+import biodup
+import bio-rust
+
+record Rust => DupKeys = "DupKeys"
+record Rust => DupRuns = "DupRuns"
+
+source Rust from "biodup.rs"
+  ( "dup_keys_pairs" as dupKeysPairsWith
+  , "dup_keys_reads" as dupKeysReadsWith
+  , "dup_runs" as dupRuns
+  , "dup_merge_runs" as mergeDupRuns
+  , "dup_histogram" as dupHistogram
+  , "dup_fraction" as dupFraction
+  , "dup_complexity_curve" as complexityCurve
+  , "dup_rate_text" as dupRateText
+  , "dup_complexity_curve_text" as complexityCurveText
+  , "dup_rust_anchor" as dupRustAnchor
+  )
+
+--' Identity that compiles biodup-rust's types into a program
+--'
+--' For a program that uses the types without calling a biodup function.
+dupRustAnchor :: Int -> Int
+
+-- Each takes `bioRustAnchor 0` so that bio-rust's types are compiled in.
+dupKeysPairsWith :: Int -> RefModels -> [ReadPair] -> [FragHits] -> DupKeys
+dupKeysReadsWith :: Int -> RefModels -> [FastqEntry] -> [FragHits] -> DupKeys
+
+dupKeysPairs r xs hs = dupKeysPairsWith (bioRustAnchor 0) r xs hs
+dupKeysReads r xs hs = dupKeysReadsWith (bioRustAnchor 0) r xs hs

@@ -1,0 +1,11 @@
+name: biodup-rust
+version: 0.1.0
+homepage: null
+synopsis: "Rust implementation of biodup"
+description: Read origin, biotype counts, gene body coverage and transcript integrity (TIN) as mergeable summaries over a mapper's placements, with RSeQC- and nf-core-shaped reports.
+category: bioinformatics
+license: MIT
+author: "Zebulun Arendsee"
+maintainer: "z@morloc.io"
+github: null
+bug-reports: null
